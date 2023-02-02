@@ -9,8 +9,8 @@ export const Container = styled.View`
   padding: 10px 15px 10px 15px;
 `
 export const Logo =styled.Image`
-  width:46px;
-  height:55px;
+  width:56px;
+  height:65px;
 
 
 `
