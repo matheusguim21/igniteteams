@@ -20,7 +20,7 @@ export function NewGroup() {
           subtitle="Crie a turma para adicionar as pessoas"
          
          />
-        <Input placeholder="Nome da turma" placeholderTextColor={theme.COLORS.GRAY_300}/>
+        <Input />
         
         
          <Button
