@@ -2,14 +2,14 @@ import styled, {css} from "styled-components/native";
 import { TouchableOpacity } from "react-native";
 
 export type FilterStyleProps ={
-  isActive?:boolean;
+  isActive?: boolean;
 
 }
 
 export const Container = styled(TouchableOpacity)<FilterStyleProps>`
 
  ${({theme, isActive}) => isActive && css`
-    border-color: ${theme.COLORS.GREEN_700};
+    border: 1px solid ${theme.COLORS.GREEN_700};
  
  `}
 
@@ -25,15 +25,32 @@ export const Container = styled(TouchableOpacity)<FilterStyleProps>`
 `
 
 export const Title = styled.Text<FilterStyleProps>`
-  ${({theme, isActive}) => isActive && css`
+  ${({theme, }) => css`
     font-size: ${theme.FONT_SIZE.SM}px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
     color:${theme.COLORS.WHITE};
   
   `}
+ 
+  
 
-  color: ${({theme}) => theme.COLORS.GRAY_300};
-  font-size: ${({theme}) => theme.FONT_SIZE.SM}px;
-  font-family: ${({theme}) => theme.FONT_FAMILY.REGULAR};
+`
 
+export const HeaderList = styled.View`
+  width:100%;
+  flex-direction:row;
+  align-items:center;
+
+  margin: 32px 0 12px ;
+
+
+`
+
+export const NumberOfPlayers = styled.Text`
+  ${({theme}) => css`
+    font-size: ${theme.FONT_SIZE.SM}px;
+    font-family: ${theme.FONT_FAMILY.BOLD};
+    color:${theme.COLORS.GRAY_200};
+
+  `}
 `
