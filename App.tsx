@@ -6,7 +6,7 @@ import theme from './src/theme';
 
 import { Loading } from '@components/Loading';
 
-import { Players } from '@screens/Players';
+import { Login } from '@screens/Login';
 
 
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
           backgroundColor="transparent"
           translucent
         />
-        { fontsLoaded ? <Players/> : <Loading/> }
+        { fontsLoaded ? <Login/> : <Loading/> }
     </ThemeProvider>
   );
 }

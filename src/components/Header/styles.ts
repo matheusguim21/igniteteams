@@ -7,11 +7,13 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-top:20%;
+  margin-bottom:20%;
 `;
 
 export const Logo = styled.Image`
-  width: 46px;
-  height: 55px;
+  width: 120px;
+  height: 100px;
 `;
 
 export const BackButton = styled.TouchableOpacity`
