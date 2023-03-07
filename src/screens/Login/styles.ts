@@ -6,7 +6,7 @@ export const Container = styled.View`
   height:70%;
   align-items:center;
   background-color: ${({theme}) => theme.COLORS.GRAY_700};
-
+  background-image: url();
 `
 
 export const LoginContainer = styled.View`
@@ -17,6 +17,14 @@ export const LoginContainer = styled.View`
   border-radius: 8px;
   padding:15px;
   
+
+`
+export const WelcomeText = styled.Text`
+  font-size: 30px;
+  font-family: 'Roboto_700Bold';
+  color:${({theme}) => theme.COLORS.GRAY_100};
+  margin-bottom:20px;
+
 
 `
 export const Text = styled.Text`

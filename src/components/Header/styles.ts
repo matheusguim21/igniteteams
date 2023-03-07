@@ -8,7 +8,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
   margin-top:20%;
-  margin-bottom:20%;
+  margin-bottom:5%;
 `;
 
 export const Logo = styled.Image`
