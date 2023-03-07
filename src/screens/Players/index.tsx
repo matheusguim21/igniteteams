@@ -8,13 +8,16 @@ import { Filter, } from "@components/Filter";
 import { useState } from "react";
 import { HeaderList, NumberOfPlayers } from "@components/Filter/styles";
 import { PlayerCard } from "@components/PlayerCard";
+import { ListEmpty } from "@components/ListEmpty";
+import { Button } from "@components/Button";
+import { Route, useRoute } from "@react-navigation/native";
 
 
 export function Players(){
 
   const [team, setTeam] = useState('TIME A')
 
-  const [players, setPlayers] = useState<string>('')  
+  const [players, setPlayers] = useState(['Vini', 'Rodrigo',' Diego', 'Biro', 'Matheus', 'Sarah', 'Jorge','Luiz'])  
   const [playerName, setPlayerName] = useState('');
 
   function handlePlayerAdd(){
@@ -29,18 +32,25 @@ export function Players(){
 
     
     
-    setPlayers([...players, playerName]);
 
     setPlayerName('');
   
   }
+
+  type RouteParams = {
+    group:string;
+  }
+
+  const route = useRoute()
+
+  const {group} = route.params as RouteParams
 
   return(
     <Container>
 
       <Header showBackButton />
       <Highlight
-      title="Nome da Turma"
+      title={group}
       subtitle="Adicione a galera e separe os times"
       />
 
@@ -78,9 +88,28 @@ export function Players(){
       data={players}
       keyExtractor={item => item}
       renderItem={({item}) => (
-        <PlayerCard name={item}/>
+        <PlayerCard 
+        name={item}
+        onRemove={()=> {}}
+        />
+        
       )}
+
+      ListEmptyComponent={() => (
+        <ListEmpty
+        message="Não há pessoas nesse time"
+        />
+      )
+      }
+
+      showsVerticalScrollIndicator={false}
+
+      contentContainerStyle={[{paddingBottom: 100}, players.length === 0 && {flex:1}]}
       />
+
+      <Button
+        title="Remover turma"
+        type="SECONDARY"/>
     </Container>
   )
 }
