@@ -17,7 +17,7 @@ export function Players(){
 
   const [team, setTeam] = useState('TIME A')
 
-  const [players, setPlayers] = useState(['Vini', 'Rodrigo',' Diego', 'Biro', 'Matheus', 'Sarah', 'Jorge','Luiz'])  
+  const [players, setPlayers] = useState([])  
   const [playerName, setPlayerName] = useState('');
 
   function handlePlayerAdd(){
