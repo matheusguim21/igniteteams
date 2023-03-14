@@ -14,7 +14,7 @@ export function Login() {
         <Text>Senha</Text>
         <Input placeholder="Digite sua senha" placeholderTextColor={theme.COLORS.GRAY_200} secureTextEntry autoCompleteType="password"/>
         <BottomContainer>
-          <ButtonIcon icon="check-circle"/>
+          <ButtonIcon icon="radio-button-unchecked"/>
           <BottomText>Lembrar-me</BottomText>
 
 

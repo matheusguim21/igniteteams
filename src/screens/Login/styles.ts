@@ -54,7 +54,7 @@ export const BottomContainer = styled.View`
 `
 export const BottomText = styled.Text`
   font-size: 17px;
-  margin-top:12px;
+  margin-top:17px;
   color: ${({theme}) => theme.COLORS.GRAY_100};
 
 `
