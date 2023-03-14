@@ -9,15 +9,20 @@ export const Container = styled.View`
 `;
 
 export const Logo = styled.Image`
-  width: 46px;
-  height: 55px;
+  
 `;
 
 export const BackButton = styled.TouchableOpacity`
   flex: 1;
 `;
 
+export const ButttonHome = styled.TouchableOpacity`
+  width: 46px;
+  height: 55px;
+`
+
 export const BackIcon = styled(CaretLeft).attrs(({ theme }) => ({
   size: 36,
   color: theme.COLORS.WHITE
 }))``;
+
