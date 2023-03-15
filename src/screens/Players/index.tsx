@@ -17,13 +17,17 @@ import { playersGetByGroupAndTeam } from "@storage/player/playerGetByGroupAndTea
 import { PlayerStorageDTO } from "@storage/player/playerStorageDTO";
 import { playerRemoveByGroup } from "@storage/player/playerRemoveByGroup";
 import { groupRemoveByName } from "@storage/group/groupRemoveByName";
+import { Loading } from "@components/Loading";
 
 
 export function Players(){
-
+  
+  const [isLoading, setIsLoading] = useState(true);
   const [team, setTeam] = useState('TIME A')
   const [players, setPlayers] = useState<PlayerStorageDTO[]>([])  
   const [newPlayerName, setNewPlayerName] = useState('')
+
+
 
   async function handleAddPlayer(){
     
@@ -66,17 +70,18 @@ export function Players(){
 
    async function fetchPlayersByTeam(){
     try{
-
+      setIsLoading(true)
       const playersByTeam = await playersGetByGroupAndTeam(group, team);
       newPlayerNameInputRef.current?.blur();
       setNewPlayerName('')
-
       setPlayers(playersByTeam); 
 
 
     }catch(error){
       console.log(error);
       Alert.alert('Pessoas', 'Não fou possível carregar as pessoas')
+    }finally{
+      setIsLoading(false);
     }
   }
 
@@ -114,18 +119,12 @@ export function Players(){
         {text: 'Sim', onPress:()=> groupRemove()}
 
       ]
-
-
-
-    )
-    
-    
-    
+    )    
   }
 
   useEffect(()=> {
     fetchPlayersByTeam();
-  }, [team,]);
+  }, [team]);
 
 
   return(
@@ -172,6 +171,9 @@ export function Players(){
 
       </HeaderList>
 
+      { isLoading ? <Loading/> : 
+
+
       <FlatList
       data={players}
       keyExtractor={item => item.name}
@@ -195,6 +197,7 @@ export function Players(){
 
       contentContainerStyle={[{paddingBottom: 100}, players.length === 0 && {flex:1}]}
       />
+      }
 
       <Button
         title="Remover turma"
