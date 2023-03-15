@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Alert } from 'react-native';
 
 import {useNavigation, useFocusEffect} from '@react-navigation/native';
 
@@ -11,10 +11,13 @@ import { Button } from '@components/Button';
 import { Container } from './styles';
 
 import { groupsGetAll } from '@storage/group/groupsGetAll';
+import { Loading } from '@components/Loading';
 
 
 
 export function Groups() {
+
+  const [isLoading, setIsLoading] = useState(true)
   const [groups, setGroups] = useState<string[]>([]);
 
   const navigation = useNavigation();
@@ -31,15 +34,22 @@ export function Groups() {
 
   async function fetchGroups(){
     try{
+
+      setIsLoading(true)
       const data  = await groupsGetAll()
       setGroups(data)
+      
+      
     }catch(error){
+      Alert.alert('Turmas','Não foi possível carregar as turmas')
       console.log(error)
+    }finally{
+      setIsLoading(false)
     }
   }
 
   useFocusEffect(useCallback(() => {
-    fetchGroups()
+    fetchGroups();
   }, []))
 
 
@@ -51,7 +61,9 @@ export function Groups() {
         subtitle="jogue com sua turma"
       />
 
-      <FlatList 
+      { isLoading ? <Loading/> :  
+        
+        <FlatList 
         data={groups}
         keyExtractor={item => item}
         renderItem={({ item }) => (
@@ -64,7 +76,7 @@ export function Groups() {
         ListEmptyComponent={() => (
           <ListEmpty message="Que tal cadastrar a primeira turma?" />
         )}
-      />
+      />}
 
       <Button 
         title='Criar nova turma'
